@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.19;
+pragma solidity 0.8.20;
 
 import "forge-std/Script.sol";
 import "./Helper.sol";
@@ -98,7 +98,8 @@ contract GetLatestMessageDetails is Script, Helper {
             uint64 latestSourceChainSelector,
             address latestSender,
             string memory latestMessage
-        ) = BasicMessageReceiver(basicMessageReceiver).getLatestMessageDetails();
+        ) = BasicMessageReceiver(basicMessageReceiver)
+                .getLatestMessageDetails();
 
         console.log("Latest Message ID: ");
         console.logBytes32(latestMessageId);

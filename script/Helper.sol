@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.20;
 
 contract Helper {
     // Supported Networks
@@ -53,7 +53,7 @@ contract Helper {
         0x114A20A10b43D4115e5aeef7345a1A71d2a60C57;
     address constant routerBaseSepolia =
         0xD3b06cEbF099CE7DA4AcCf578aaebFDBd6e88a93;
-    address constant routerWemixTestnet = 
+    address constant routerWemixTestnet =
         0xA8C0c11bf64AF62CDCA6f93D3769B88BdD7cb93D;
     address constant routerKromaSepoliaTestnet =
         0xA8C0c11bf64AF62CDCA6f93D3769B88BdD7cb93D;
@@ -103,7 +103,7 @@ contract Helper {
         0x4200000000000000000000000000000000000006;
     address constant wwemixWemixTestnet =
         0xbE3686643c05f00eC46e73da594c78098F7a9Ae7;
-    address constant wethKromaSepoliaTestnet = 
+    address constant wethKromaSepoliaTestnet =
         0x4200000000000000000000000000000000000001;
     address constant wethMetisSepolia =
         0x5c48e07062aC4E2Cf4b9A768a711Aef18e8fbdA0;
@@ -127,7 +127,7 @@ contract Helper {
         0x88A2d74F47a237a62e7A51cdDa67270CE381555e;
     address constant ccipBnMWemixTestnet =
         0xF4E4057FbBc86915F4b2d63EEFFe641C03294ffc;
-    address constant ccipBnMKromaSepoliaTestnet = 
+    address constant ccipBnMKromaSepoliaTestnet =
         0x6AC3e353D1DDda24d5A5416024d6E436b8817A4e;
     address constant ccipBnMMetisSepolia =
         0x20Aa09AAb761e2E600d65c6929A9fd1E59821D3f;
@@ -149,7 +149,7 @@ contract Helper {
         0xA98FA8A008371b9408195e52734b1768c0d1Cb5c;
     address constant clCcipLnMWemixTestnet =
         0xcb342aE3D65E3fEDF8F912B0432e2B8F88514d5D;
-    address constant clCcipLnMKromaSepoliaTestnet = 
+    address constant clCcipLnMKromaSepoliaTestnet =
         0x835fcBB6770E1246CfCf52F83cDcec3177d0bb6b;
     address constant clCcipLnMMetisSepolia =
         0x705b364CadE0e515577F2646529e3A417473a155;
@@ -179,7 +179,9 @@ contract Helper {
         networks[SupportedNetworks.OPTIMISM_SEPOLIA] = "Optimism Sepolia";
         networks[SupportedNetworks.BASE_SEPOLIA] = "Base Sepolia";
         networks[SupportedNetworks.WEMIX_TESTNET] = "Wemix Testnet";
-        networks[SupportedNetworks.KROMA_SEPOLIA_TESTNET] = "Kroma Sepolia Testnet";
+        networks[
+            SupportedNetworks.KROMA_SEPOLIA_TESTNET
+        ] = "Kroma Sepolia Testnet";
         networks[SupportedNetworks.METIS_SEPOLIA] = "Metis Sepolia";
         networks[SupportedNetworks.ZKSYNC_SEPOLIA] = "zkSync Sepolia";
     }

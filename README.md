@@ -1,3 +1,33 @@
+## CCIP Bootcamp 第 3 天的作业
+
+### 作业要求:
+
+测量 ccipReceive 函数的燃气消耗。一旦得到该数值，将其增加 10%，并将其作为 transferUsdc 函数的 gasLimit 参数
+
+### 作业内容说明
+
+1. src/ccip-master-class-4 是关于 USDC 跨链的测试.参考:
+   https://cll-devrel.gitbook.io/ccip-bootcamp/v/mandarin-ccip-bootcamp/di-3-tian/lian-xi-4-kua-lian-fa-song-usdc
+
+2. src 目录里，与作业相关的源码位于 src/ccip-master-class-4 ，src 目录里其他子目录可忽略.
+
+3. test/TransferUSDC.t.sol 是一个预估 ccipReceive gas limit 的测试用例
+
+4. 实现作业要求的关键流程位于：script/ccip-master-class-4/B2TransferUsdcWithDynamicFeeOnAvalancheFuji.sol
+
+#### B2TransferUsdcWithDynamicFeeOnAvalancheFuji.sol 说明:
+
+    1. estimateReceiveGas方法首先调用test目录里的相关方法获取 ccipReceive 的gasLimit
+    2. eoa调用AvalancheFuji链，将eoa的usdc代币操作授权给TransferUSDC(0xF23C461dE16f42C88c6dCe6AC645a87EFad1a7Cc)
+    3. 在AvalancheFuji链上调用合约方法 transferUSDC.transferUsdc() 将usdc跨链转账给 EthereumSepolia 上的 transferReceiver 合约.
+    4. 上面第3步里，调用transferUSDC.transferUsdc时，将第1步获取的gasLimit预估值作为参数传入.
+
+## ## CCIP Bootcamp 第 3 天的作业说明到此结束----------------------------
+
+## ----------------------------
+
+## ----------------------------
+
 ## Chainlink CCIP Starter Kit
 
 > **Note**
@@ -8,7 +38,7 @@ This project demonstrates a couple of basic Chainlink CCIP use cases.
 
 ## Prerequisites
 
-- [Foundry](https://book.getfoundry.sh/getting-started/installation)
+-   [Foundry](https://book.getfoundry.sh/getting-started/installation)
 
 ## Getting Started
 
@@ -38,14 +68,14 @@ forge build
 
 With Chainlink CCIP, one can:
 
-- Transfer supported tokens
-- Send messages (any data)
-- Send messages and tokens
+-   Transfer supported tokens
+-   Send messages (any data)
+-   Send messages and tokens
 
 CCIP receiver can be:
 
-- Smart contract that implements `CCIPReceiver.sol`
-- EOA
+-   Smart contract that implements `CCIPReceiver.sol`
+-   EOA
 
 **Note**: If you send a message and token(s) to EOA, only tokens will arrive
 
@@ -113,19 +143,19 @@ So, if you want to pay for Chainlink CCIP fees in LINK token, you will pass `1 (
 
 The test files are located in the `test` folder. Note that there are two types of tests:
 
-- **Test with [CCIPLocalSimulator](https://github.com/smartcontractkit/chainlink-local/blob/main/src/ccip/CCIPLocalSimulator.sol)**: These tests are used to test the CCIP functionality in your local environment. They are located in the `test/no-fork` folder. To run these tests, run the following command:
+-   **Test with [CCIPLocalSimulator](https://github.com/smartcontractkit/chainlink-local/blob/main/src/ccip/CCIPLocalSimulator.sol)**: These tests are used to test the CCIP functionality in your local environment. They are located in the `test/no-fork` folder. To run these tests, run the following command:
 
-  ```shell
-  forge test --no-match-contract ".*ForkTest$"
-  ```
+    ```shell
+    forge test --no-match-contract ".*ForkTest$"
+    ```
 
-- **Test with [CCIPLocalSimulatorFork](https://github.com/smartcontractkit/chainlink-local/blob/main/src/ccip/CCIPLocalSimulatorFork.sol)**: These tests are used to test the CCIP functionality in a forked environment. They are located in the test/fork folder. To run these tests, run the following command:
+-   **Test with [CCIPLocalSimulatorFork](https://github.com/smartcontractkit/chainlink-local/blob/main/src/ccip/CCIPLocalSimulatorFork.sol)**: These tests are used to test the CCIP functionality in a forked environment. They are located in the test/fork folder. To run these tests, run the following command:
 
-  ```shell
-  forge test --match-contract ".*ForkTest$"
-  ```
+    ```shell
+    forge test --match-contract ".*ForkTest$"
+    ```
 
-  **Note**: The fork tests send CCIP messages from Arbitrum Sepolia to Ethereum Sepolia, so make sure you have the _ETHEREUM_SEPOLIA_RPC_URL_ and _ARBITRUM_SEPOLIA_RPC_URL_ set in your .env file.
+    **Note**: The fork tests send CCIP messages from Arbitrum Sepolia to Ethereum Sepolia, so make sure you have the _ETHEREUM_SEPOLIA_RPC_URL_ and _ARBITRUM_SEPOLIA_RPC_URL_ set in your .env file.
 
 ### Faucet
 
@@ -562,25 +592,25 @@ forge script ./script/CrossChainNFT.s.sol:DeploySource -vvv --broadcast --rpc-ur
 
 3. Fund the [`SourceMinter.sol`](./src/cross-chain-nft-minter/SourceMinter.sol) smart contract with tokens for CCIP fees.
 
-- If you want to pay for CCIP fees in Native tokens:
+-   If you want to pay for CCIP fees in Native tokens:
 
-  Open Metamask and fund your contract with Native tokens. For example, if you want to mint from Avalanche Fuji to Ethereum Sepolia, you can send 0.1 Fuji AVAX to the [`SourceMinter.sol`](./src/cross-chain-nft-minter/SourceMinter.sol) smart contract.
+    Open Metamask and fund your contract with Native tokens. For example, if you want to mint from Avalanche Fuji to Ethereum Sepolia, you can send 0.1 Fuji AVAX to the [`SourceMinter.sol`](./src/cross-chain-nft-minter/SourceMinter.sol) smart contract.
 
-  Or, you can use the `cast send` command:
+    Or, you can use the `cast send` command:
 
-  ```shell
-  cast send <SOURCE_MINTER_ADDRESS> --rpc-url avalancheFuji --private-key=$PRIVATE_KEY --value 0.1ether
-  ```
+    ```shell
+    cast send <SOURCE_MINTER_ADDRESS> --rpc-url avalancheFuji --private-key=$PRIVATE_KEY --value 0.1ether
+    ```
 
-- If you want to pay for CCIP fees in LINK tokens:
+-   If you want to pay for CCIP fees in LINK tokens:
 
-  Open Metamask and fund your contract with LINK tokens. For example, if you want to mint from Avalanche Fuji to Ethereum Sepolia, you can send 1 Fuji LINK to the [`SourceMinter.sol`](./src/cross-chain-nft-minter/SourceMinter.sol) smart contract.
+    Open Metamask and fund your contract with LINK tokens. For example, if you want to mint from Avalanche Fuji to Ethereum Sepolia, you can send 1 Fuji LINK to the [`SourceMinter.sol`](./src/cross-chain-nft-minter/SourceMinter.sol) smart contract.
 
-  Or, you can use the `cast send` command:
+    Or, you can use the `cast send` command:
 
-  ```shell
-  cast send 0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846 "transfer(address,uint256)" <SOURCE_MINTER_ADDRESS> 1000000000000000000 --rpc-url avalancheFuji --private-key=$PRIVATE_KEY
-  ```
+    ```shell
+    cast send 0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846 "transfer(address,uint256)" <SOURCE_MINTER_ADDRESS> 1000000000000000000 --rpc-url avalancheFuji --private-key=$PRIVATE_KEY
+    ```
 
 4. Mint NFTs by calling the `mint()` function of the [`SourceMinter.sol`](./src/cross-chain-nft-minter/SourceMinter.sol) smart contract on the **source blockchain**. It will send the CCIP Cross-Chain Message with the ABI-encoded mint function signature from the [`MyNFT.sol`](./src/cross-chain-nft-minter/MyNFT.sol) smart contract. The [`DestinationMinter.sol`](./src/cross-chain-nft-minter/DestinationMinter.sol) smart contracts will receive the CCIP Cross-Chain Message with the ABI-encoded mint function signature as a payload and call the [`MyNFT.sol`](./src/cross-chain-nft-minter/MyNFT.sol) smart contract using it. The [`MyNFT.sol`](./src/cross-chain-nft-minter/MyNFT.sol) smart contract will then mint the new NFT to the `msg.sender` account from the `mint()` function of the [`SourceMinter.sol`](./src/cross-chain-nft-minter/SourceMinter.sol) smart contract, a.k.a to the account from which you will call the following command:
 
