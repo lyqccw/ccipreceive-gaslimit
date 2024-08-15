@@ -17,10 +17,12 @@
 
 #### B2TransferUsdcWithDynamicFeeOnAvalancheFuji.sol 说明:
 
-    1. estimateReceiveGas方法首先调用test目录里的相关方法获取 ccipReceive 的gasLimit
-    2. eoa调用AvalancheFuji链，将eoa的usdc代币操作授权给TransferUSDC(0xF23C461dE16f42C88c6dCe6AC645a87EFad1a7Cc)
-    3. 在AvalancheFuji链上调用合约方法 transferUSDC.transferUsdc() 将usdc跨链转账给 EthereumSepolia 上的 transferReceiver 合约.
-    4. 上面第3步里，调用transferUSDC.transferUsdc时，将第1步获取的gasLimit预估值作为参数传入.
+1. estimateReceiveGas 方法首先调用 test 目录里的相关方法获取 ccipReceive 的 gasLimit
+2. eoa 调用 AvalancheFuji 链，将 eoa 的 usdc 代币操作授权给 TransferUSDC(0xF23C461dE16f42C88c6dCe6AC645a87EFad1a7Cc)
+3. 在 AvalancheFuji 链上调用合约方法 transferUSDC.transferUsdc() 将 usdc 跨链转账给 EthereumSepolia 上的 transferReceiver 合约.
+4. 上面第 3 步里，调用 transferUSDC.transferUsdc 时，将第 1 步获取的 gasLimit 预估值作为参数传入.
+
+5. 脚本 B2TransferUsdcWithDynamicFeeOnAvalancheFuji.sol，提交后的一个 message 信息: https://ccip.chain.link/msg/0x371cf2a9771a21214a85eaa4783e39c1226a44314fd236ee41a33a48def4a217
 
 ## ## CCIP Bootcamp 第 3 天的作业说明到此结束----------------------------
 
