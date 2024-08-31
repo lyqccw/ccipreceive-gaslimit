@@ -6,8 +6,8 @@ import {Test, console, Vm} from "forge-std/Test.sol";
 import {BurnMintERC677} from "@chainlink/contracts-ccip/src/v0.8/shared/token/ERC677/BurnMintERC677.sol";
 import {MockCCIPRouter} from "@chainlink/contracts-ccip/src/v0.8/ccip/test/mocks/MockRouter.sol";
 import {Client} from "@chainlink/contracts-ccip/src/v0.8/ccip/libraries/Client.sol";
-import "../src/ccip-master-class-4/TransferUSDC.sol";
-import "../src/ccip-master-class-4/UsdcReceiver.sol";
+import "../src/ccip-day3/TransferUSDC.sol";
+import "../src/ccip-day3/UsdcReceiver.sol";
 
 import "../script/Helper.sol";
 import "./MockUsdc.sol";
@@ -22,6 +22,7 @@ contract TransferUSDCTest is Test, Helper {
     MockUsdc public usdcToken;
 
     address eoaaa = address(0x123);
+
     // A specific chain selector for identifying the chain.
 
     // chainIdEthereumSepolia = 16015286601757825753

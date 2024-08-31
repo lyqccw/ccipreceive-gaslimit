@@ -1,34 +1,10 @@
-## CCIP Bootcamp 第 3 天的作业
+ CCIP Bootcamp day3的作业
 
-### 作业要求:
-
-测量 ccipReceive 函数的燃气消耗。一旦得到该数值，将其增加 10%，并将其作为 transferUsdc 函数的 gasLimit 参数
-
-### 作业内容说明
-
-1. src/ccip-master-class-4 是关于 USDC 跨链的测试.参考:
-   https://cll-devrel.gitbook.io/ccip-bootcamp/v/mandarin-ccip-bootcamp/di-3-tian/lian-xi-4-kua-lian-fa-song-usdc
-
-2. src 目录里，与作业相关的源码位于 src/ccip-master-class-4 ，src 目录里其他子目录可忽略.
+1. src/ccip-day3 是关于 USDC 跨链的测试
 
 3. test/TransferUSDC.t.sol 是一个预估 ccipReceive gas limit 的测试用例
 
-4. 实现作业要求的关键流程位于：script/ccip-master-class-4/B2TransferUsdcWithDynamicFeeOnAvalancheFuji.sol
-
-#### B2TransferUsdcWithDynamicFeeOnAvalancheFuji.sol 说明:
-
-1. estimateReceiveGas 方法首先调用 test 目录里的相关方法获取 ccipReceive 的 gasLimit
-2. eoa 调用 AvalancheFuji 链，将 eoa 的 usdc 代币操作授权给 TransferUSDC(0xF23C461dE16f42C88c6dCe6AC645a87EFad1a7Cc)
-3. 在 AvalancheFuji 链上调用合约方法 transferUSDC.transferUsdc() 将 usdc 跨链转账给 EthereumSepolia 上的 transferReceiver 合约.
-4. 上面第 3 步里，调用 transferUSDC.transferUsdc 时，将第 1 步获取的 gasLimit 预估值作为参数传入.
-
-5. 脚本 B2TransferUsdcWithDynamicFeeOnAvalancheFuji.sol，提交后的一个 message 信息: https://ccip.chain.link/msg/0x371cf2a9771a21214a85eaa4783e39c1226a44314fd236ee41a33a48def4a217
-
-## ## CCIP Bootcamp 第 3 天的作业说明到此结束----------------------------
-
-## ----------------------------
-
-## ----------------------------
+4. 作业位于：script/ccip-master-class-4/B2TransferUsdcWithDynamicFeeOnAvalancheFuji.sol
 
 ## Chainlink CCIP Starter Kit
 
